@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kulineria – Komunitas Pecinta Kuliner</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    
+/* Menyamakan ukuran gambar semua kartu resep */
+#resep .recipe-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Menyamakan tinggi kartu dan susunan kontennya */
+#resep .recipe-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Membuat isi kartu mengisi ruang yang tersedia */
+#resep .recipe-card .card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Menjaga tombol resep berada di bagian bawah */
+#resep .recipe-card .card-body button {
+  margin-top: auto;
+}
+
+    .recipe-card {
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+    }
+    .recipe-card:hover {
+      transform: translateY(-4px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Promo Bar -->
+  <div class="promo-bar text-center py-2">
+    <span class="me-2">Bergabunglah dengan 50.000+ pecinta kuliner Indonesia.</span>
+    <a href="#" class="fw-semibold text-decoration-none">DAFTAR SEKARANG »</a>
+  </div>
+
+  <!-- Main Navbar -->
+  <nav class="navbar navbar-expand-lg bg-white sticky-top border-bottom">
+    <div class="container">
+      <a class="navbar-brand brand-logo" href="index.html">kulineria</a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Resep</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#resep">Makanan Utama</a></li>
+              <li><a class="dropdown-item" href="#resep">Camilan</a></li>
+              <li><a class="dropdown-item" href="#resep">Dessert</a></li>
+              <li><a class="dropdown-item" href="#resep">Minuman</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#review">Review Restoran</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#event">Event Kuliner</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#forum">Forum Diskusi</a>
+          </li>
+        </ul>
+
+        <form class="d-flex search-form me-3" role="search">
+          <div class="input-group">
+            <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+            <input class="form-control border-start-0" type="search" placeholder='Cari resep, restoran, event...' aria-label="Search">
+          </div>
+        </form>
+
+        <div class="d-flex align-items-center gap-3">
+          <a href="#" class="nav-link small d-none d-lg-block">Newsletter</a>
+          <a href="#" class="nav-link small d-none d-lg-block">Masuk</a>
+          <a href="admin-login.html" class="btn btn-outline-dark btn-sm px-3">
+            <i class="bi bi-shield-lock me-1"></i> Admin
+          </a>
+          <a href="#" class="btn btn-danger btn-sm px-3 fw-semibold">DAFTAR</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO / TOP STORIES -->
+  <section class="py-5 bg-cream">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">TOP STORIES</h2>
+      
+      <div class="row g-4">
+        <div class="col-lg-8">
+          <div class="card border-0 shadow-sm featured-card h-100 recipe-card" data-bs-toggle="modal" data-bs-target="#modalCreamyGarlic">
+            <div class="position-relative">
+              <img src="/image/Creamy-Garlic-Chicken-1.jpg" class="card-img-top featured-img" alt="Creamy Garlic Chicken">
+              <span class="badge bg-danger position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">FEATURED RECIPE</span>
+            </div>
+            <div class="card-body p-4">
+              <h3 class="card-title fw-bold mb-2">Creamy Garlic Butter Chicken</h3>
+              <p class="text-muted mb-0">Ayam empuk dengan saus bawang putih dan mentega yang creamy. Klik untuk melihat resep lengkap.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <h5 class="fw-semibold mb-3">Terbaru di Komunitas</h5>
+          
+          <div class="d-flex gap-3 mb-4 latest-item" style="cursor:pointer;" data-bs-toggle="modal" data-bs-target="#modalChickenCurry">
+            <img src="/image/curry - Copy.webp" class="rounded latest-thumb" alt="Chicken Curry">
+            <div>
+              <h6 class="mb-1 fw-semibold">Authentic Chicken Curry</h6>
+              <small class="text-muted">Resep baru • 2 jam lalu</small>
+            </div>
+          </div>
+
+          <div class="d-flex gap-3 mb-4 latest-item">
+            <img src="/image/bu rudy.webp" class="rounded latest-thumb" alt="Review">
+            <div>
+              <h6 class="mb-1 fw-semibold">Review: Warung Sambal Bu Rudi</h6>
+              <small class="text-muted">Review Restoran • 5 jam lalu</small>
+            </div>
+          </div>
+
+          <div class="d-flex gap-3 mb-4 latest-item">
+            <img src="/image/kuliner.jpg" class="rounded latest-thumb" alt="Event">
+            <div>
+              <h6 class="mb-1 fw-semibold">Festival Kuliner Nusantara 2026</h6>
+              <small class="text-muted">Event • 1 hari lagi</small>
+            </div>
+          </div>
+
+          <div class="d-flex gap-3 latest-item">
+            <img src="/image/liwet.webp" class="rounded latest-thumb" alt="Forum">
+            <div>
+              <h6 class="mb-1 fw-semibold">Tips Memasak Nasi Liwet yang Sempurna</h6>
+              <small class="text-muted">Forum Diskusi • 12 balasan</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 FITUR UTAMA USER -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center mb-2">APA YANG BISA KAMU LAKUKAN?</h2>
+      <p class="text-center text-muted mb-5">Empat fitur utama komunitas pecinta kuliner</p>
+      
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="card border-0 h-100 text-center feature-card p-4">
+            <div class="feature-icon mx-auto mb-3">
+              <i class="bi bi-journal-richtext"></i>
+            </div>
+            <h5 class="fw-bold">Resep Masakan</h5>
+            <p class="text-muted small mb-0">Bagikan & temukan ribuan resep dari seluruh Indonesia. Dari makanan tradisional hingga modern fusion.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card border-0 h-100 text-center feature-card p-4">
+            <div class="feature-icon mx-auto mb-3">
+              <i class="bi bi-star"></i>
+            </div>
+            <h5 class="fw-bold">Review Restoran</h5>
+            <p class="text-muted small mb-0">Tulis & baca review jujur tentang restoran, warung, hingga street food favorit komunitas.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card border-0 h-100 text-center feature-card p-4">
+            <div class="feature-icon mx-auto mb-3">
+              <i class="bi bi-calendar-event"></i>
+            </div>
+            <h5 class="fw-bold">Event Kuliner</h5>
+            <p class="text-muted small mb-0">Temukan & ikuti festival, workshop memasak, food festival, dan gathering pecinta kuliner.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card border-0 h-100 text-center feature-card p-4">
+            <div class="feature-icon mx-auto mb-3">
+              <i class="bi bi-chat-dots"></i>
+            </div>
+            <h5 class="fw-bold">Forum Diskusi</h5>
+            <p class="text-muted small mb-0">Diskusikan tips memasak, tanya resep, berbagi pengalaman, dan saling membantu sesama foodie.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEP MASAKAN -->
+  <section id="resep" class="py-5 bg-cream">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="section-title mb-0">RESEP MASAKAN</h2>
+        <a href="#" class="btn btn-outline-danger btn-sm rounded-pill px-3">Lihat Semua</a>
+      </div>
+
+      <div class="row g-4">
+        <!-- Card 1: Creamy Garlic Chicken -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card border-0 recipe-card shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#modalCreamyGarlic">
+            <img src="/image/Creamy-Garlic-Chicken-1.jpg" class="card-img-top rounded-3" alt="Creamy Garlic Chicken">
+            <div class="card-body px-2">
+              <h6 class="fw-semibold mb-1">Creamy Garlic Chicken</h6>
+              <small class="text-muted d-block mb-2"><i class="bi bi-person me-1"></i>by John • ★★★★★</small>
+              <button class="btn btn-sm btn-outline-danger w-100">Lihat Resep</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Chicken Curry -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card border-0 recipe-card shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#modalChickenCurry">
+            <img src="/image/Indian-Curry-Chicken-2.jpg" class="card-img-top rounded-3" alt="Chicken Curry">
+            <div class="card-body px-2">
+              <h6 class="fw-semibold mb-1">Chicken Curry</h6>
+              <small class="text-muted d-block mb-2"><i class="bi bi-person me-1"></i>by John • ★★★★☆</small>
+              <button class="btn btn-sm btn-outline-danger w-100">Lihat Resep</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Chicken Salted Egg -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card border-0 recipe-card shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#modalSaltedEgg">
+            <img src="/image/chicken-salted-egg.jpg" class="card-img-top rounded-3" alt="Chicken Salted Egg">
+            <div class="card-body px-2">
+              <h6 class="fw-semibold mb-1">Chicken Salted Egg</h6>
+              <small class="text-muted d-block mb-2"><i class="bi bi-person me-1"></i>by Felis • ★★★★★</small>
+              <button class="btn btn-sm btn-outline-danger w-100">Lihat Resep</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Chicken Teriyaki -->
+        <div class="col-6 col-md-4 col-lg-3">
+          <div class="card border-0 recipe-card shadow-sm h-100" data-bs-toggle="modal" data-bs-target="#modalTeriyaki">
+            <img src="/image/teriyaki-chicken-recipe-1.jpg" class="card-img-top rounded-3" alt="Chicken Teriyaki">
+            <div class="card-body px-2">
+              <h6 class="fw-semibold mb-1">Chicken Teriyaki</h6>
+              <small class="text-muted d-block mb-2"><i class="bi bi-person me-1"></i>by Rosi • ★★★★☆</small>
+              <button class="btn btn-sm btn-outline-danger w-100">Lihat Resep</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DETAIL RESEP -->
+
+  <!-- 1. Modal Creamy Garlic Chicken -->
+  <div class="modal fade" id="modalCreamyGarlic" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold">Creamy Garlic Chicken</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="/image/Creamy-Garlic-Chicken-1.jpg" class="img-fluid rounded mb-3 w-100" style="max-height: 300px; object-fit: cover;" alt="Creamy Garlic Chicken">
+          <p class="text-muted small mb-3"><i class="bi bi-person me-1"></i>Resep oleh <strong>John</strong> • Waktu Masak: 25 Menit • 2-3 Porsi</p>
+          
+          <h6 class="fw-bold">Bahan-bahan:</h6>
+          <ul class="small">
+            <li>500g dada ayam, potong dadu</li>
+            <li>4 siung bawang putih, cincang halus</li>
+            <li>200ml heavy cream / cooking cream</li>
+            <li>2 sdm butter (mentega)</li>
+            <li>50g keju parmesan parut</li>
+            <li>Garam, lada hitam, dan oregano secukupnya</li>
+          </ul>
+
+          <h6 class="fw-bold mt-3">Langkah Pembuatan:</h6>
+          <ol class="small">
+            <li>Bumbui dada ayam dengan garam, lada, dan sedikit oregano.</li>
+            <li>Panaskan 1 sdm butter di wajan, tumis ayam hingga matang dan kecokelatan. Angkat dan sisihkan.</li>
+            <li>Di wajan yang sama, lelehkan sisa butter dan tumis bawang putih hingga harum.</li>
+            <li>Tuangkan heavy cream, aduk rata dan biarkan mendidih perlahan dengan api kecil.</li>
+            <li>Masukkan keju parmesan, aduk hingga saus mengental.</li>
+            <li>Masukkan kembali ayam ke dalam saus creamy, aduk rata, lalu sajikan hangat.</li>
+          </ol>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Modal Chicken Curry -->
+  <div class="modal fade" id="modalChickenCurry" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold">Chicken Curry</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="/image/Indian-Curry-Chicken-2.jpg" class="img-fluid rounded mb-3 w-100" style="max-height: 300px; object-fit: cover;" alt="Chicken Curry">
+          <p class="text-muted small mb-3"><i class="bi bi-person me-1"></i>Resep oleh <strong>John</strong> • Waktu Masak: 40 Menit • 4 Porsi</p>
+          
+          <h6 class="fw-bold">Bahan-bahan:</h6>
+          <ul class="small">
+            <li>500g paha ayam filet, potong sesuai selera</li>
+            <li>2 buah kentang & 1 buah wortel, potong dadu</li>
+            <li>1 buah bawang bombay, potong kasar</li>
+            <li>2 sdm bubuk kari instan</li>
+            <li>400ml santan sedang atau susu cair</li>
+            <li>Garam, gula, dan penyedap rasa secukupnya</li>
+          </ul>
+
+          <h6 class="fw-bold mt-3">Langkah Pembuatan:</h6>
+          <ol class="small">
+            <li>Tumis bawang bombay hingga harum dan layu.</li>
+            <li>Masukkan potongan ayam, masak hingga berubah warna.</li>
+            <li>Tambahkan bubuk kari, aduk hingga merata dengan ayam.</li>
+            <li>Tuang santan/susu, lalu masukkan kentang dan wortel.</li>
+            <li>Masak dengan api kecil hingga sayuran empuk dan kuah mengental. Bumbui dengan garam dan gula. Sajikan.</li>
+          </ol>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Modal Chicken Salted Egg -->
+  <div class="modal fade" id="modalSaltedEgg" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold">Chicken Salted Egg</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="/image/chicken-salted-egg.jpg" class="img-fluid rounded mb-3 w-100" style="max-height: 300px; object-fit: cover;" alt="Chicken Salted Egg">
+          <p class="text-muted small mb-3"><i class="bi bi-person me-1"></i>Resep oleh <strong>Felis</strong> • Waktu Masak: 30 Menit • 3 Porsi</p>
+          
+          <h6 class="fw-bold">Bahan-bahan:</h6>
+          <ul class="small">
+            <li>400g dada ayam crispy (dibalur tepung maizena dan digoreng)</li>
+            <li>3 kuning telur asin rebus, haluskan dengan sedikit air hangat</li>
+            <li>3 siung bawang putih, cincang</li>
+            <li>2 tangkai daun kari (salam koja)</li>
+            <li>2 buah cabai rawit merah, iris halus</li>
+            <li>2 sdm mentega dan 100ml susu evaporated</li>
+          </ul>
+
+          <h6 class="fw-bold mt-3">Langkah Pembuatan:</h6>
+          <ol class="small">
+            <li>Goreng ayam bertepung hingga renyah dan matang, tiriskan.</li>
+            <li>Panaskan mentega, tumis bawang putih, cabai rawit, dan daun kari hingga harum.</li>
+            <li>Masukkan kuning telur asin yang sudah dihaluskan, aduk hingga berbusa.</li>
+            <li>Tuangkan susu evaporated, aduk rata hingga saus halus dan meletup-letup.</li>
+            <li>Masukkan ayam crispy, aduk cepat hingga seluruh permukaan ayam terbalur saus salted egg. Sajikan.</li>
+          </ol>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Modal Chicken Teriyaki -->
+  <div class="modal fade" id="modalTeriyaki" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold">Chicken Teriyaki</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="/image/teriyaki-chicken-recipe-1.jpg" class="img-fluid rounded mb-3 w-100" style="max-height: 300px; object-fit: cover;" alt="Chicken Teriyaki">
+          <p class="text-muted small mb-3"><i class="bi bi-person me-1"></i>Resep oleh <strong>Rosi</strong> • Waktu Masak: 20 Menit • 2 Porsi</p>
+          
+          <h6 class="fw-bold">Bahan-bahan:</h6>
+          <ul class="small">
+            <li>400g paha ayam potong strip</li>
+            <li>3 sdm kecap manis & 2 sdm kecap asin</li>
+            <li>1 sdm saus tiram & 1 sdm minyak wijen</li>
+            <li>1 sdm madu / gula pasir</li>
+            <li>1/2 buah bawang bombay, iris memanjang</li>
+            <li>Wijen sangrai untuk taburan</li>
+          </ul>
+
+          <h6 class="fw-bold mt-3">Langkah Pembuatan:</h6>
+          <ol class="small">
+            <li>Marinasi ayam dengan kecap asin, saus tiram, dan minyak wijen selama 15 menit.</li>
+            <li>Panaskan sedikit minyak, tumis ayam hingga berubah warna dan matang.</li>
+            <li>Masukkan kecap manis, madu, dan bawang bombay. Aduk rata hingga saus karamel mengental dan meresap ke dalam ayam.</li>
+            <li>Angkat, tata di atas piring, lalu taburi dengan wijen sangrai.</li>
+          </ol>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEW RESTORAN -->
+  <section id="review" class="py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="section-title mb-0">REVIEW RESTORAN</h2>
+        <a href="#" class="btn btn-outline-danger btn-sm rounded-pill px-3">Lihat Semua</a>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card border-0 h-100 story-card shadow-sm">
+            <img src="/image/bu rudy.webp" class="card-img-top rounded-top-3" alt="Restoran 1" style="height:200px;object-fit:cover;">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h5 class="fw-bold mb-0">Warung Sambal Bu Rudi</h5>
+                <span class="badge bg-success">4.8</span>
+              </div>
+              <p class="text-muted small mb-2"><i class="bi bi-geo-alt me-1"></i>Jakarta Selatan</p>
+              <p class="small text-muted mb-0">"Sambalnya nendang banget! Ayam gorengnya crispy dan bumbunya meresap..."</p>
+              <div class="mt-3 small text-muted">oleh <strong>Tsabita</strong> • 2 hari lalu</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0 h-100 story-card shadow-sm">
+            <img src="/image/Franchise-Kopi-Nako-1024x682.jpg" class="card-img-top rounded-top-3" alt="Restoran 2" style="height:200px;object-fit:cover;">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h5 class="fw-bold mb-0">Kopi nako. Surabaya</h5>
+                <span class="badge bg-success">4.6</span>
+              </div>
+              <p class="text-muted small mb-2"><i class="bi bi-geo-alt me-1"></i>Surabaya</p>
+              <p class="small text-muted mb-0">"Suasana cozy, kopi susu gula arennya recommended. Cocok buat kerja remote."</p>
+              <div class="mt-3 small text-muted">oleh <strong>Nabila</strong> • 5 hari lalu</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0 h-100 story-card shadow-sm">
+            <img src="/image/Restoran-Layar-Seafood-Surabaya-Kulampah-1024x768.webp" class="card-img-top rounded-top-3" alt="Restoran 3" style="height:200px;object-fit:cover;">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <h5 class="fw-bold mb-0">Seafood layar surabaya</h5>
+                <span class="badge bg-success">4.9</span>
+              </div>
+              <p class="text-muted small mb-2"><i class="bi bi-geo-alt me-1"></i>Surabaya</p>
+              <p class="small text-muted mb-0">"Lobster dan ikan bakar segar yang diimpor dari jepang. Memiliki kesan mewah"</p>
+              <div class="mt-3 small text-muted">oleh <strong>Abed</strong> • 1 minggu lalu</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENT KULINER -->
+  <section id="event" class="py-5 bg-cream">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="section-title mb-0">EVENT KULINER</h2>
+        <a href="#" class="btn btn-outline-danger btn-sm rounded-pill px-3">Lihat Semua</a>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card border-0 h-100 story-card shadow-sm">
+            <img src="/image/jakarta.webp" class="card-img-top rounded-top-3" alt="Event 1" style="height:180px;object-fit:cover;">
+            <div class="card-body">
+              <span class="badge bg-danger mb-2">25–14 Okt 2025</span>
+              <h5 class="fw-bold">Jakarta Desert Week</h5>
+              <p class="text-muted small mb-2"><i class="bi bi-geo-alt me-1"></i>JIExpo Kemayoran, Jakarta</p>
+              <p class="small text-muted">Lebih dari 100 tenant makanan daerah, workshop memasak, dan live cooking show, serta banyak desert enak tersedia.</p>
+              <a href="#" class="btn btn-sm btn-outline-dark mt-2">Detail Event</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0 h-100 story-card shadow-sm">
+            <img src="/image/flona-05.jpg" class="card-img-top rounded-top-3" alt="Event 2" style="height:180px;object-fit:cover;">
+            <div class="card-body">
+              <span class="badge bg-danger mb-2">1-28 Sept 2026</span>
+              <h5 class="fw-bold">Pameran flora dan fauna</h5>
+              <p class="text-muted small mb-2"><i class="bi bi-geo-alt me-1"></i>Taman lapangan banteng, Jakarta</p>
+              <p class="small text-muted">Pameran tentang flora dan fauna yang diillki oleh bangsa indonesia . Sangat seru!!. Kuota terbatas!</p>
+              <a href="#" class="btn btn-sm btn-outline-dark mt-2">Detail Event</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0 h-100 story-card shadow-sm">
+            <img src="/image/prj.webp" class="card-img-top rounded-top-3" alt="Event 3" style="height:180px;object-fit:cover;">
+            <div class="card-body">
+              <span class="badge bg-danger mb-2">8-18 Okt 2026</span>
+              <h5 class="fw-bold">PRJ 2026</h5>
+              <p class="text-muted small mb-2"><i class="bi bi-geo-alt me-1"></i>Grand city mall , Surabaya</p>
+              <p class="small text-muted">Kumpul bareng komunitas, tukar resep, dan cicipi hidangan buatan anggota, serta banyak boot seru tersedia . Ayo ramaikan !!</p>
+              <a href="#" class="btn btn-sm btn-outline-dark mt-2">Detail Event</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORUM DISKUSI -->
+  <section id="forum" class="py-5">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="section-title mb-0">FORUM DISKUSI</h2>
+        <a href="#" class="btn btn-outline-danger btn-sm rounded-pill px-3">Buka Forum</a>
+      </div>
+
+      <div class="list-group list-group-flush border rounded-3 overflow-hidden shadow-sm">
+        <a href="#" class="list-group-item list-group-item-action py-3 px-4">
+          <div class="d-flex w-100 justify-content-between align-items-start">
+            <div>
+              <h6 class="mb-1 fw-semibold">Tips membuat saus creamy pada garlic chicken agar tidak pecah?</h6>
+              <small class="text-muted">oleh <strong>Rina</strong> di kategori Teknik Memasak</small>
+            </div>
+            <span class="badge bg-secondary rounded-pill">24</span>
+          </div>
+          <small class="text-muted">Terakhir aktif 15 menit lalu</small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-3 px-4">
+          <div class="d-flex w-100 justify-content-between align-items-start">
+            <div>
+              <h6 class="mb-1 fw-semibold">Rekomendasi bubuk kari terbaik untuk chicken curry rumahan?</h6>
+              <small class="text-muted">oleh <strong>Andi</strong> di kategori Resep</small>
+            </div>
+            <span class="badge bg-secondary rounded-pill">18</span>
+          </div>
+          <small class="text-muted">Terakhir aktif 1 jam lalu</small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-3 px-4">
+          <div class="d-flex w-100 justify-content-between align-items-start">
+            <div>
+              <h6 class="mb-1 fw-semibold">Tips membuat telur asin agar cairannya pas untuk salted egg chicken?</h6>
+              <small class="text-muted">oleh <strong>Dewi</strong> di kategori Resep</small>
+            </div>
+            <span class="badge bg-secondary rounded-pill">42</span>
+          </div>
+          <small class="text-muted">Terakhir aktif 3 jam lalu</small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action py-3 px-4">
+          <div class="d-flex w-100 justify-content-between align-items-start">
+            <div>
+              <h6 class="mb-1 fw-semibold">Rahasia saus teriyaki mengkilap (glossy) sempurna?</h6>
+              <small class="text-muted">oleh <strong>Budi</strong> di kategori Teknik Memasak</small>
+            </div>
+            <span class="badge bg-secondary rounded-pill">9</span>
+          </div>
+          <small class="text-muted">Terakhir aktif 5 jam lalu</small>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white pt-5 pb-4">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <h5 class="brand-logo text-danger mb-3">kulineria</h5>
+          <p class="small text-secondary">Website komunitas pecinta kuliner Indonesia. Tempat berbagi resep, review restoran, event, dan diskusi seputar dunia makanan.</p>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="fw-semibold mb-3">Jelajahi</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="#resep" class="text-secondary text-decoration-none">Resep</a></li>
+            <li class="mb-2"><a href="#review" class="text-secondary text-decoration-none">Review Restoran</a></li>
+            <li class="mb-2"><a href="#event" class="text-secondary text-decoration-none">Event Kuliner</a></li>
+            <li class="mb-2"><a href="#forum" class="text-secondary text-decoration-none">Forum Diskusi</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md-2">
+          <h6 class="fw-semibold mb-3">Komunitas</h6>
+          <ul class="list-unstyled small">
+            <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Tentang Kami</a></li>
+            <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Aturan Komunitas</a></li>
+            <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Kontak</a></li>
+            <li class="mb-2"><a href="#" class="text-secondary text-decoration-none">Privasi</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6 class="fw-semibold mb-3">Newsletter</h6>
+          <p class="small text-secondary">Dapatkan resep & event terbaru setiap minggu.</p>
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Email Anda">
+            <button class="btn btn-danger" type="button">Daftar</button>
+          </div>
+        </div>
+      </div>
+      <hr class="my-4 border-secondary">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small text-secondary">
+        <p class="mb-2 mb-md-0">© 2026 Kulineria – Komunitas Pecinta Kuliner. All rights reserved.</p>
+        <div class="d-flex gap-3">
+          <a href="#" class="text-secondary"><i class="bi bi-instagram fs-5"></i></a>
+          <a href="#" class="text-secondary"><i class="bi bi-youtube fs-5"></i></a>
+          <a href="#" class="text-secondary"><i class="bi bi-facebook fs-5"></i></a>
+          <a href="#" class="text-secondary"><i class="bi bi-twitter-x fs-5"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
