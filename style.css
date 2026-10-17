@@ -1,0 +1,248 @@
+/* ===== Base & Typography ===== */
+:root {
+  --brand-red: #c41e3a;
+  --cream: #f8f5f0;
+  --text-dark: #1a1a1a;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-dark);
+  background-color: #fff;
+}
+
+.brand-logo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  color: var(--brand-red) !important;
+  letter-spacing: -0.5px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--brand-red);
+  margin: 8px auto 0;
+}
+
+/* ===== Promo Bar ===== */
+.promo-bar {
+  background: #f5f5f5;
+  font-size: 0.875rem;
+  color: #444;
+}
+
+.promo-bar a {
+  color: var(--brand-red);
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.navbar .nav-link {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #333;
+  padding: 0.5rem 0.9rem !important;
+}
+
+.navbar .nav-link:hover {
+  color: var(--brand-red);
+}
+
+.search-form .form-control {
+  border-radius: 0 50px 50px 0;
+  min-width: 220px;
+  font-size: 0.9rem;
+}
+
+.search-form .input-group-text {
+  border-radius: 50px 0 0 50px;
+  border-right: 0;
+}
+
+.search-form .form-control:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+}
+
+/* ===== Backgrounds ===== */
+.bg-cream {
+  background-color: var(--cream);
+}
+
+/* ===== Cards & Images ===== */
+.featured-img {
+  height: 420px;
+  object-fit: cover;
+}
+
+.featured-card {
+  overflow: hidden;
+  border-radius: 12px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.featured-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12) !important;
+}
+
+.latest-thumb {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.latest-item {
+  transition: background 0.2s;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.latest-item:hover {
+  background: #f0ebe3;
+}
+
+.story-card img,
+.recipe-card img,
+.diet-card img,
+.tip-card img,
+.seasonal-item img {
+  transition: transform 0.35s ease;
+}
+
+.story-card:hover img,
+.recipe-card:hover img,
+.diet-card:hover img,
+.tip-card:hover img,
+.seasonal-item:hover img {
+  transform: scale(1.04);
+}
+
+.story-card,
+.recipe-card,
+.diet-card,
+.tip-card {
+  cursor: pointer;
+}
+
+.seasonal-item img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.seasonal-item {
+  cursor: pointer;
+}
+
+/* ===== Filter Pills ===== */
+.filter-pills .btn {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* ===== Admin Login Page ===== */
+.login-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8f5f0 0%, #e8e0d5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-card {
+  max-width: 420px;
+  width: 100%;
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+}
+
+.login-card .card-body {
+  padding: 2.5rem;
+}
+
+.login-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--brand-red);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin: 0 auto 1.5rem;
+}
+
+/* ===== Feature Cards (4 fitur utama) ===== */
+.feature-card {
+  background: #fff;
+  border-radius: 12px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+  width: 64px;
+  height: 64px;
+  background: #fde8ec;
+  color: var(--brand-red);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+
+/* ===== Footer ===== */
+footer a:hover {
+  color: #fff !important;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 991.98px) {
+  .search-form {
+    margin: 1rem 0;
+  }
+  .search-form .form-control {
+    min-width: 100%;
+  }
+  .featured-img {
+    height: 280px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .section-title {
+    font-size: 1.25rem;
+  }
+  .featured-img {
+    height: 220px;
+  }
+}
